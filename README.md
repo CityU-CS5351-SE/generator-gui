@@ -16,7 +16,7 @@ You can use Generator-GUI:
 * 3. Support a new function(by button "Open Target Folder") that you can view those generated java files not only in IDE but also in File Explorer.
 * 4. [NC]Support a new function(by button "Test Connection") that you can test your database connection in the user interface.
 * 5. [NC;Bonus]Support a new function saving history settings. You can save your customized settings (including database connection,name,path,code format,annoations use,etc.) so that next time you can choose one history setting to generate codes easily.
-* 6. Support .exe format, that you can easily use it. You can also git clone this project, and run it in your own IDE.
+* 6. Support .exe format(support Windows 32/64 bit, jdk 1.8+) so that you can easily use it. You can also git clone this project, and run it in your own IDE.
 * 7. Customers can choose which files to generate when using this code generation tool. (use checkbox to choose)
 * 8. [NC]When using this tool, customers can load tables from database, and choose which tables to generate related java files.
 * 9. [NV]Customers can preview those generated java files by this tool.

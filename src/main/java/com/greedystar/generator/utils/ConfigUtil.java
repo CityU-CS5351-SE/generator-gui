@@ -1,12 +1,16 @@
 package com.greedystar.generator.utils;
 
-import com.greedystar.generator.entity.Configuration;
-import com.greedystar.generator.entity.Constant;
-import org.yaml.snakeyaml.Yaml;
-
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.URL;
+
+import org.cityu.group6.generator.entity.DatabaseConnectionConfig;
+import org.cityu.group6.generator.entity.GlobalConfig;
+import org.yaml.snakeyaml.Yaml;
+
+import com.greedystar.generator.entity.Configuration;
+import com.greedystar.generator.entity.Constant;
+import com.greedystar.generator.entity.IdStrategy;
 
 /**
  * 代码生成器的配置工具
@@ -27,13 +31,13 @@ public class ConfigUtil {
      */
     public static Configuration getConfiguration() {
         // ConfigUtil.getConfiguration()会在生成代码之前调用（获取业务表元数据），这里为null通常表示用户通过generator.yaml进行配置，
-        if (null == ConfigUtil.configuration) {
-            synchronized (ConfigUtil.class) {
-                if (null == ConfigUtil.configuration) {
-                    readConfigurationFromFile(); // 从配置文件中读取配置信息
-                }
-            }
-        }
+//        if (null == ConfigUtil.configuration) {
+//            synchronized (ConfigUtil.class) {
+//                if (null == ConfigUtil.configuration) {
+//                    readConfigurationFromFile(); // 从配置文件中读取配置信息
+//                }
+//            }
+//        }
         return ConfigUtil.configuration;
     }
 
@@ -46,6 +50,40 @@ public class ConfigUtil {
         ConfigUtil.configuration = configuration;
         checkConfiguration();
     }
+    
+	/**
+	 * TODO readConfigurationFromUI
+	 */
+	public static void readConfigurationFromUI(GlobalConfig globalConfig, DatabaseConnectionConfig dbConfig) {
+		Configuration configuration = new Configuration();
+		configuration.setAuthor(globalConfig.getAuthor());
+		configuration.setPackageName(globalConfig.getPackageName());
+		String dbUrl = "jdbc:mysql://" + dbConfig.getHostIp() + ":" + dbConfig.getPort() + "/" + dbConfig.getSchema()
+				+ "?useUnicode=true&characterEncoding=" + dbConfig.getEncoding() + "&serverTimezone=Asia/Shanghai";
+		// read database configuration
+		Configuration.Db db = new Configuration.Db(dbUrl, dbConfig.getUsername(), dbConfig.getPassword());
+		configuration.setDb(db);
+		// read path configuration
+		Configuration.Path path = new Configuration.Path(globalConfig.getControllerPath(),
+				globalConfig.getServicePath(), globalConfig.getInterfacePath(), globalConfig.getDaoPath(),
+				globalConfig.getEntityPath(), globalConfig.getMapperPath());
+		configuration.setPath(path);
+		// read name configuration (do not contain interfaceName)
+		Configuration.Name name = new Configuration.Name(globalConfig.getControllerName(),
+				globalConfig.getServiceName(), globalConfig.getDaoName(), globalConfig.getEntityName(),
+				globalConfig.getMapperName());
+		configuration.setName(name);
+		configuration.setLombokEnable(globalConfig.isLombokEnable());
+		configuration.setMapperUnderSource(globalConfig.isMapperUnderSource());
+		configuration.setSwaggerEnable(globalConfig.isSwaggerEnable());
+		configuration.setMybatisPlusEnable(globalConfig.isMybatisPlusEnable());
+		configuration.setJpaEnable(globalConfig.isJpaEnable());
+		configuration.setFileOverride(globalConfig.isFileOverride());
+		// TODO GUI should use ChoiceBox
+		configuration.setIdStrategy(globalConfig.isIdStrategy() ? IdStrategy.AUTO : IdStrategy.UUID);
+
+		ConfigUtil.setConfiguration(configuration);
+	}
 
     /**
      * 通过generator.yaml读取配置

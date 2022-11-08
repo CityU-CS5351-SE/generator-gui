@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<VBox prefHeight="400.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1"
+fx:controller="org.cityu.group6.generator.controller.NewConnectionController">
+  <children>
+    <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="262.0" prefWidth="516.0" VBox.vgrow="ALWAYS">
+         <children>
+            <Label layoutX="41.0" layoutY="38.0" text="SaveName">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <TextField fx:id="saveName" layoutX="163.0" layoutY="36.0" prefHeight="23.0" prefWidth="392.0" />
+            <Label layoutX="41.0" layoutY="71.0" text="Host Ip/Name">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <TextField fx:id="hostIp" layoutX="163.0" layoutY="69.0" prefHeight="23.0" prefWidth="392.0" promptText="localhost" />
+            <Label layoutX="40.0" layoutY="107.0" text="Port">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <TextField fx:id="port" layoutX="163.0" layoutY="105.0" prefHeight="23.0" prefWidth="95.0" promptText="3306" />
+            <Label layoutX="40.0" layoutY="142.0" text="Username">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <TextField fx:id="username" layoutX="163.0" layoutY="140.0" prefHeight="23.0" prefWidth="392.0" promptText="root" />
+            <Label layoutX="40.0" layoutY="176.0" text="Password">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <TextField fx:id="password" layoutX="163.0" layoutY="174.0" prefHeight="23.0" prefWidth="216.0" />
+            <Label layoutX="40.0" layoutY="214.0" text="Schema/Database">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <TextField fx:id="schema" layoutX="163.0" layoutY="212.0" prefHeight="23.0" prefWidth="392.0" />
+            <Label layoutX="40.0" layoutY="253.0" text="Encoding">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <TextField fx:id="encoding" layoutX="163.0" layoutY="251.0" promptText="UTF-8" />
+            <Button fx:id="testConnection" layoutX="60.0" layoutY="310.0" mnemonicParsing="false" onMouseClicked="#testConnection" text="Test Connection">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Button>
+            <Button fx:id="saveDbConfig" layoutX="412.0" layoutY="310.0" mnemonicParsing="false" onMouseClicked="#saveDbConfig" text="Save">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Button>
+         </children>
+    </AnchorPane>
+  </children>
+</VBox>

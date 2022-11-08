@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.Accordion?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.CheckBox?>
 <?import javafx.scene.control.Label?>
@@ -23,150 +24,150 @@
                </font>
             </Label>
             <TextField fx:id="author" layoutX="129.0" layoutY="43.0" />
-            <Label layoutX="21.0" layoutY="111.0" text="PackageName">
+            <Label layoutX="22.0" layoutY="113.0" text="ProjectPath">
                <font>
                   <Font size="14.0" />
                </font>
             </Label>
-            <TextField fx:id="packageName" layoutX="129.0" layoutY="111.0" prefHeight="23.0" prefWidth="290.0" promptText="org.cityu.group6.test" />
-            <CheckBox fx:id="isController" layoutX="23.0" layoutY="141.0" mnemonicParsing="false" text="Controller">
+            <TextField fx:id="projectFolderPath" layoutX="129.0" layoutY="111.0" prefHeight="23.0" prefWidth="290.0" />
+            <CheckBox fx:id="isController" layoutX="24.0" layoutY="181.0" mnemonicParsing="false" text="Controller">
                <font>
                   <Font size="14.0" />
                </font>
             </CheckBox>
-            <Label fx:id="controllerNameLabel" disable="true" layoutX="62.0" layoutY="163.0" text="Name">
+            <Label fx:id="controllerNameLabel" disable="true" layoutX="63.0" layoutY="203.0" text="Name">
                <font>
                   <Font size="14.0" />
                </font>
             </Label>
-            <TextField fx:id="controllerName" disable="true" layoutX="113.0" layoutY="165.0"  />
-            <Label fx:id="controllerPathLabel" disable="true" layoutX="318.0" layoutY="165.0" text="Path">
+            <TextField fx:id="controllerName" disable="true" layoutX="114.0" layoutY="205.0" />
+            <Label fx:id="controllerPathLabel" disable="true" layoutX="319.0" layoutY="205.0" text="Path">
                <font>
                   <Font size="14.0" />
                </font>
             </Label>
-            <TextField fx:id="controllerPath" disable="true" layoutX="362.0" layoutY="165.0" text="controller" />
-            <CheckBox fx:id="isService" layoutX="23.0" layoutY="186.0" mnemonicParsing="false" text="Service">
+            <TextField fx:id="controllerPath" disable="true" layoutX="363.0" layoutY="205.0" text="controller" />
+            <CheckBox fx:id="isService" layoutX="24.0" layoutY="226.0" mnemonicParsing="false" text="Service">
                <font>
                   <Font size="14.0" />
                </font>
             </CheckBox>
-            <Label fx:id="serviceNameLabel" disable="true" layoutX="61.0" layoutY="212.0" text="Name">
+            <Label fx:id="serviceNameLabel" disable="true" layoutX="62.0" layoutY="252.0" text="Name">
                <font>
                   <Font size="14.0" />
                </font>
             </Label>
-            <TextField fx:id="serviceName" disable="true" layoutX="113.0" layoutY="213.0" />
-            <Label fx:id="servicePathLabel" disable="true" layoutX="316.0" layoutY="212.0" text="Path">
+            <TextField fx:id="serviceName" disable="true" layoutX="114.0" layoutY="253.0" />
+            <Label fx:id="servicePathLabel" disable="true" layoutX="317.0" layoutY="252.0" text="Path">
                <font>
                   <Font size="14.0" />
                </font>
             </Label>
-            <TextField fx:id="servicePath" disable="true" layoutX="362.0" layoutY="212.0" text="service.impl" />
-            <CheckBox fx:id="isInterface" layoutX="23.0" layoutY="241.0" mnemonicParsing="false" text="Interface">
+            <TextField fx:id="servicePath" disable="true" layoutX="363.0" layoutY="252.0" text="service.impl" />
+            <CheckBox fx:id="isInterface" layoutX="24.0" layoutY="281.0" mnemonicParsing="false" text="Interface">
                <font>
                   <Font size="14.0" />
                </font>
             </CheckBox>
-            <Label fx:id="interfaceNameLabel" disable="true" layoutX="61.0" layoutY="266.0" text="Name">
+            <Label fx:id="interfaceNameLabel" disable="true" layoutX="62.0" layoutY="306.0" text="Name">
                <font>
                   <Font size="14.0" />
                </font>
             </Label>
-            <TextField fx:id="interfaceName" disable="true" layoutX="113.0" layoutY="267.0"  />
-            <Label fx:id="interfacePathLabel" disable="true" layoutX="315.0" layoutY="265.0" text="Path">
+            <TextField fx:id="interfaceName" disable="true" layoutX="114.0" layoutY="307.0" />
+            <Label fx:id="interfacePathLabel" disable="true" layoutX="316.0" layoutY="305.0" text="Path">
                <font>
                   <Font size="14.0" />
                </font>
             </Label>
-            <TextField fx:id="interfacePath" disable="true" layoutX="362.0" layoutY="267.0" text="service" />
-            <CheckBox fx:id="isDao" layoutX="24.0" layoutY="293.0" mnemonicParsing="false" text="Dao">
+            <TextField fx:id="interfacePath" disable="true" layoutX="363.0" layoutY="307.0" text="service" />
+            <CheckBox fx:id="isDao" layoutX="25.0" layoutY="333.0" mnemonicParsing="false" text="Dao">
                <font>
                   <Font size="14.0" />
                </font>
             </CheckBox>
-            <Label fx:id="daoNameLabel" disable="true" layoutX="59.0" layoutY="313.0" text="Name">
+            <Label fx:id="daoNameLabel" disable="true" layoutX="60.0" layoutY="353.0" text="Name">
                <font>
                   <Font size="14.0" />
                </font>
             </Label>
-            <TextField fx:id="daoName" disable="true" layoutX="113.0" layoutY="313.0"  />
-            <Label fx:id="daoPathLabel" disable="true" layoutX="315.0" layoutY="315.0" text="Path">
+            <TextField fx:id="daoName" disable="true" layoutX="114.0" layoutY="353.0" />
+            <Label fx:id="daoPathLabel" disable="true" layoutX="316.0" layoutY="355.0" text="Path">
                <font>
                   <Font size="14.0" />
                </font>
             </Label>
-            <TextField fx:id="daoPath" disable="true" layoutX="362.0" layoutY="315.0" text="dao" />
-            <CheckBox fx:id="isEntity" layoutX="24.0" layoutY="340.0" mnemonicParsing="false" text="Entity">
+            <TextField fx:id="daoPath" disable="true" layoutX="363.0" layoutY="355.0" text="dao" />
+            <CheckBox fx:id="isEntity" layoutX="25.0" layoutY="380.0" mnemonicParsing="false" text="Entity">
                <font>
                   <Font size="14.0" />
                </font>
             </CheckBox>
-            <Label fx:id="entityNameLabel" disable="true" layoutX="59.0" layoutY="367.0" text="Name">
+            <Label fx:id="entityNameLabel" disable="true" layoutX="60.0" layoutY="407.0" text="Name">
                <font>
                   <Font size="14.0" />
                </font>
             </Label>
-            <TextField fx:id="entityName" disable="true" layoutX="113.0" layoutY="366.0"  />
-            <Label fx:id="entityPathLabel" disable="true" layoutX="315.0" layoutY="365.0" text="Path">
+            <TextField fx:id="entityName" disable="true" layoutX="114.0" layoutY="406.0" />
+            <Label fx:id="entityPathLabel" disable="true" layoutX="316.0" layoutY="405.0" text="Path">
                <font>
                   <Font size="14.0" />
                </font>
             </Label>
-            <TextField fx:id="entityPath" disable="true" layoutX="362.0" layoutY="365.0" text="entity" />
-            <CheckBox fx:id="isMapper" layoutX="24.0" layoutY="390.0" mnemonicParsing="false" text="Mapper">
+            <TextField fx:id="entityPath" disable="true" layoutX="363.0" layoutY="405.0" text="entity" />
+            <CheckBox fx:id="isMapper" layoutX="25.0" layoutY="430.0" mnemonicParsing="false" text="Mapper">
                <font>
                   <Font size="14.0" />
                </font>
             </CheckBox>
-            <Label fx:id="mapperNameLabel" disable="true" layoutX="58.0" layoutY="416.0" text="Name">
+            <Label fx:id="mapperNameLabel" disable="true" layoutX="59.0" layoutY="456.0" text="Name">
                <font>
                   <Font size="14.0" />
                </font>
             </Label>
-            <TextField fx:id="mapperName" disable="true" layoutX="113.0" layoutY="416.0"  />
-            <Label fx:id="mapperPathLabel" disable="true" layoutX="314.0" layoutY="416.0" text="Path">
+            <TextField fx:id="mapperName" disable="true" layoutX="114.0" layoutY="456.0" />
+            <Label fx:id="mapperPathLabel" disable="true" layoutX="315.0" layoutY="456.0" text="Path">
                <font>
                   <Font size="14.0" />
                </font>
             </Label>
-            <TextField fx:id="mapperPath" disable="true" layoutX="362.0" layoutY="416.0" text="mybatis" />
-            <CheckBox fx:id="mybatisPlusEnable" layoutX="111.0" layoutY="451.0" mnemonicParsing="false" text="mybatisPlusEnable">
+            <TextField fx:id="mapperPath" disable="true" layoutX="363.0" layoutY="456.0" text="mybatis" />
+            <CheckBox fx:id="mybatisPlusEnable" layoutX="112.0" layoutY="491.0" mnemonicParsing="false" text="mybatisPlusEnable">
                <font>
                   <Font size="14.0" />
                </font>
             </CheckBox>
-            <CheckBox fx:id="jpaEnable" layoutX="341.0" layoutY="451.0" mnemonicParsing="false" text="jpaEnable">
+            <CheckBox fx:id="jpaEnable" layoutX="342.0" layoutY="491.0" mnemonicParsing="false" text="jpaEnable">
                <font>
                   <Font size="14.0" />
                </font>
             </CheckBox>
-            <CheckBox fx:id="swaggerEnable" layoutX="111.0" layoutY="481.0" mnemonicParsing="false" text="swaggerEnable">
+            <CheckBox fx:id="swaggerEnable" layoutX="112.0" layoutY="521.0" mnemonicParsing="false" text="swaggerEnable">
                <font>
                   <Font size="14.0" />
                </font>
             </CheckBox>
-            <CheckBox fx:id="lombokEnable" layoutX="341.0" layoutY="481.0" mnemonicParsing="false" text="lombokEnable">
+            <CheckBox fx:id="lombokEnable" layoutX="342.0" layoutY="521.0" mnemonicParsing="false" selected="true" text="lombokEnable">
                <font>
                   <Font size="14.0" />
                </font>
             </CheckBox>
-            <CheckBox fx:id="idStrategy" layoutX="111.0" layoutY="508.0" mnemonicParsing="false" text="idStrategy">
+            <CheckBox fx:id="idStrategy" layoutX="112.0" layoutY="548.0" mnemonicParsing="false" selected="true" text="idStrategy">
                <font>
                   <Font size="14.0" />
                </font>
             </CheckBox>
-            <CheckBox fx:id="fileOverride" layoutX="340.0" layoutY="510.0" mnemonicParsing="false" text="fileOverride">
+            <CheckBox fx:id="fileOverride" layoutX="341.0" layoutY="550.0" mnemonicParsing="false" selected="true" text="fileOverride">
                <font>
                   <Font size="14.0" />
                </font>
             </CheckBox>
-            <CheckBox fx:id="mapperUnderSource" layoutX="111.0" layoutY="537.0" mnemonicParsing="false" text="mapperUnderSource">
+            <CheckBox fx:id="mapperUnderSource" layoutX="112.0" layoutY="577.0" mnemonicParsing="false" text="mapperUnderSource">
                <font>
                   <Font size="14.0" />
                </font>
             </CheckBox>
-            <Button fx:id="generateCode" layoutX="111.0" layoutY="577.0" mnemonicParsing="false" onMouseClicked="#generateCode" text="Generate Code">
+            <Button fx:id="generateCode" layoutX="99.0" layoutY="609.0" mnemonicParsing="false" onMouseClicked="#generateCode" text="Generate Code">
                <font>
                   <Font size="18.0" />
                </font>
@@ -183,7 +184,20 @@
                </font>
             </Label>
             <TextField fx:id="className" layoutX="440.0" layoutY="79.0" promptText="User" />
+            <Button fx:id="chooseProjectFolder" layoutX="444.0" layoutY="111.0" mnemonicParsing="false" onMouseClicked="#chooseProjectFolder" text="Choose" />
+            <Label layoutX="20.0" layoutY="148.0" text="PackageName">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <TextField fx:id="packageName" layoutX="129.0" layoutY="146.0" prefHeight="23.0" prefWidth="290.0" promptText="org.cityu.group6.test" />
+            <Button fx:id="openTargetFolder" layoutX="332.0" layoutY="609.0" mnemonicParsing="false" onMouseClicked="#openTargetFolder" text="Open Target Foler">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Button>
       </children>
     </AnchorPane>
+      <Accordion />
   </children>
 </VBox>

@@ -1,11 +1,14 @@
 package org.cityu.group6.generator.controller;
 
+import java.awt.Desktop;
+import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
 import org.cityu.group6.generator.entity.DatabaseConnectionConfig;
 import org.cityu.group6.generator.entity.GlobalConfig;
+import org.cityu.group6.generator.util.AlertUtil;
 import org.cityu.group6.generator.util.DbConfigUtil;
 
 import com.greedystar.generator.invoker.SingleInvoker;
@@ -20,6 +23,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.stage.DirectoryChooser;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
@@ -37,6 +41,8 @@ public class MainUIController implements Initializable {
 	private TextField className;
 	@FXML
 	private TextField packageName;
+	@FXML
+	private TextField projectFolderPath;
 	// controller
 	@FXML
 	private CheckBox isController;
@@ -120,9 +126,11 @@ public class MainUIController implements Initializable {
 
 	/**
 	 * click "Generate Code" button:generate Code
+	 * 
+	 * @throws IOException
 	 */
 	@FXML
-	private void generateCode() {
+	private void generateCode() throws IOException {
 		// get gloabConfig & dbConfig from UI
 		GlobalConfig globalConfig = this.getGlobalConfigFromUI();
 		DatabaseConnectionConfig dbConfig = DbConfigUtil.getDbConfig();
@@ -131,6 +139,28 @@ public class MainUIController implements Initializable {
 		Invoker invoker = new SingleInvoker.Builder().setTableName(globalConfig.getTableName())
 				.setClassName(globalConfig.getClassName()).build();
 		invoker.execute();
+		// TODO success notice (can use try catch to notice if fail)
+		URL url = Thread.currentThread().getContextClassLoader().getResource("fxml/SuccessNotice.fxml");
+		FXMLLoader fxmlLoader = new FXMLLoader(url);
+		Parent root = fxmlLoader.load();
+		Stage successStage = new Stage();
+		successStage.setScene(new Scene(root));
+		successStage.setTitle("Code generation success!");
+		successStage.initModality(Modality.APPLICATION_MODAL);
+		successStage.show();
+	}
+
+	/**
+	 * openTargetFolder
+	 */
+	@FXML
+	private void openTargetFolder() {
+		String projectFolder = projectFolderPath.getText();
+		try {
+			Desktop.getDesktop().browse(new File(projectFolder).toURI());
+		} catch (Exception e) {
+			AlertUtil.showErrorAlert("Open Folder Fail! Please Check Path!" + e.getMessage());
+		}
 	}
 
 	/**
@@ -162,6 +192,8 @@ public class MainUIController implements Initializable {
 		globalConfig.setAuthor(author.getText());
 		globalConfig.setTableName(tableName.getText());
 		globalConfig.setClassName(className.getText());
+		// set projectFolderPath and packageName
+		globalConfig.setProjectFolderPath(projectFolderPath.getText());
 		globalConfig.setPackageName(packageName.getText());
 		// CheckBox-controller
 		globalConfig.setController(isController.isSelected());
@@ -229,17 +261,17 @@ public class MainUIController implements Initializable {
 	/**
 	 * generateTextByClassName
 	 */
-	public void generateTextByClassName() {
+	private void generateTextByClassName() {
 		className.focusedProperty().addListener((obs, oldVal, newVal) -> {
 			if (!newVal) {
 				// Not focus, generate text by className
 				String name = className.getText();
-				controllerName.setText(name +"Controller");
-				serviceName.setText(name +"ServiceImpl");
-				interfaceName.setText(name +"Service");
-				daoName.setText(name +"Dao");
+				controllerName.setText(name + "Controller");
+				serviceName.setText(name + "ServiceImpl");
+				interfaceName.setText(name + "Service");
+				daoName.setText(name + "Dao");
 				entityName.setText(name);
-				mapperName.setText(name +"Mapper");
+				mapperName.setText(name + "Mapper");
 			}
 		});
 	}
@@ -268,5 +300,38 @@ public class MainUIController implements Initializable {
 				textfield2.setDisable(true);
 			}
 		});
+	}
+
+	/**
+	 * chooseProjectFolder
+	 */
+	@FXML
+	private void chooseProjectFolder() {
+		DirectoryChooser directoryChooser = new DirectoryChooser();
+		// get the stage which owning the folder:
+		Stage primaryStage = (Stage) projectFolderPath.getScene().getWindow();
+		File selectedFolder = directoryChooser.showDialog(primaryStage);
+		// projectFilePath
+		if (selectedFolder != null) {
+			String projectFilePath = selectedFolder.getAbsolutePath();
+			projectFolderPath.setText(projectFilePath);
+			// show packageName(auto-generate, could change)
+			packageName.setText(this.pathToPackageName(projectFilePath));
+		}
+	}
+
+	/**
+	 * pathToPackageName
+	 * 
+	 * @param filePath
+	 * @return
+	 */
+	private String pathToPackageName(String filePath) {
+		// get string after "src\main\java\"
+		String reg = "src\\main\\java\\";
+		String packageName = filePath.substring(filePath.lastIndexOf(reg) + reg.length());
+		// replace "\\" to "."
+		packageName = packageName.replace("\\", ".");
+		return packageName;
 	}
 }

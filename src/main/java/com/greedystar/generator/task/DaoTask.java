@@ -16,22 +16,29 @@ import java.util.Map;
  */
 public class DaoTask extends AbstractTask {
 
-    public DaoTask(AbstractInvoker invoker) {
-        this.invoker = invoker;
-    }
+	public DaoTask(AbstractInvoker invoker) {
+		this.invoker = invoker;
+	}
 
-    @Override
-    public void run() throws IOException, TemplateException {
-        // 构造Dao填充数据
-        Map<String, Object> daoData = new HashMap<>();
-        daoData.put("Configuration", ConfigUtil.getConfiguration());
-        daoData.put("ClassName", ConfigUtil.getConfiguration().getName().getEntity().replace(Constant.PLACEHOLDER, invoker.getClassName()));
-        daoData.put("EntityName", StringUtil.firstToLowerCase(invoker.getClassName()));
-        daoData.put("DaoClassName", ConfigUtil.getConfiguration().getName().getDao().replace(Constant.PLACEHOLDER, invoker.getClassName()));
-        String filePath = FileUtil.getSourcePath() + StringUtil.package2Path(ConfigUtil.getConfiguration().getPackageName())
-                + StringUtil.package2Path(ConfigUtil.getConfiguration().getPath().getDao());
-        String fileName = ConfigUtil.getConfiguration().getName().getDao().replace(Constant.PLACEHOLDER, invoker.getClassName()) + ".java";
-        // 生成dao文件
-        FileUtil.generateToJava(FreemarkerConfigUtil.TYPE_DAO, daoData, filePath, fileName);
-    }
+	@Override
+	public void run() throws IOException, TemplateException {
+		// 构造Dao填充数据
+		Map<String, Object> daoData = new HashMap<>();
+		daoData.put("Configuration", ConfigUtil.getConfiguration());
+		daoData.put("ClassName", ConfigUtil.getConfiguration().getName().getEntity().replace(Constant.PLACEHOLDER,
+				invoker.getClassName()));
+		daoData.put("EntityName", StringUtil.firstToLowerCase(invoker.getClassName()));
+		daoData.put("DaoClassName",
+				ConfigUtil.getConfiguration().getName().getDao().replace(Constant.PLACEHOLDER, invoker.getClassName()));
+		// String filePath = FileUtil.getSourcePath() +
+		// StringUtil.package2Path(ConfigUtil.getConfiguration().getPackageName())
+		// + StringUtil.package2Path(ConfigUtil.getConfiguration().getPath().getDao());
+		// TODO getFilePathFromGUI
+		String filePath = ConfigUtil.getConfiguration().getProjectFolderPath() + "\\"
+				+ StringUtil.package2Path(ConfigUtil.getConfiguration().getPath().getDao());
+		String fileName = ConfigUtil.getConfiguration().getName().getDao().replace(Constant.PLACEHOLDER,
+				invoker.getClassName()) + ".java";
+		// 生成dao文件
+		FileUtil.generateToJava(FreemarkerConfigUtil.TYPE_DAO, daoData, filePath, fileName);
+	}
 }

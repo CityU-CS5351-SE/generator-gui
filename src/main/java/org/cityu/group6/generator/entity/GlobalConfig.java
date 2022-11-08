@@ -15,7 +15,15 @@ public class GlobalConfig {
 
 	private String className;
 
+	/**
+	 * project packageName
+	 */
 	private String packageName;
+
+	/**
+	 * project real file path
+	 */
+	private String projectFolderPath;
 
 	private boolean controller;
 

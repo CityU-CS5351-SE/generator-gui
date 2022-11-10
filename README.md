@@ -1,7 +1,7 @@
 
 # Welcome Generator-GUI
 
-This tool is based on a open-source code generation tool(greedy/Generator:), we implement GUI of this tool, and also implement several enhanced functions.
+This tool is based on a open-source code generation tool(greedy/Generator: https://github.com/GreedyStar/generator), we implement GUI of this tool, and also implement several enhanced functions.
 
 Generator-GUI is a software engineering tool which generate java codes based on database tables. The code templates of this tool based on current mainstream Java Frameworks, such as Spring, SpringMVC, Mybatis（Mybatis-Plus、JPA）. This tool could decrease those boring and repetitive works, let developers more focused on technology and performance, imporve working efficiency and coding passion.
 

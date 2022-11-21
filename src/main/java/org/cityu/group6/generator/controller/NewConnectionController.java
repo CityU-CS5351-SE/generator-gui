@@ -4,7 +4,7 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 import org.cityu.group6.generator.entity.DatabaseConnectionConfig;
-import org.cityu.group6.generator.util.DbConfigUtil;
+import org.cityu.group6.generator.util.ParameterManager;
 
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -58,7 +58,7 @@ public class NewConnectionController implements Initializable {
 		dbconfig.setSchema(schema.getText());
 		dbconfig.setEncoding(encoding.getText());
 		// set static dbconfig
-		DbConfigUtil.setDbConfig(dbconfig);
+//		ParameterManager.setDbConfig(dbconfig);
 		// close the window
 		Stage dbStage = (Stage) saveDbConfig.getScene().getWindow();
 		dbStage.close();

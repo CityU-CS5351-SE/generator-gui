@@ -9,7 +9,7 @@
   <children>
     <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="122.0" prefWidth="232.0" VBox.vgrow="ALWAYS">
       <children>
-        <Label alignment="CENTER" layoutX="48.0" layoutY="85.0" style="&#10;" text="Java files has already generated! Please check!" textAlignment="CENTER" textFill="#9f9f9f" wrapText="false">
+        <Label alignment="CENTER" layoutX="48.0" layoutY="85.0" style="&#10;" text="Database Connection Testing Successful!" textAlignment="CENTER" textFill="#9f9f9f" wrapText="false">
           <font>
             <Font size="18.0" />
           </font>

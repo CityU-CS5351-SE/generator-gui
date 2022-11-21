@@ -6,6 +6,8 @@ import java.net.URL;
 
 import org.cityu.group6.generator.entity.DatabaseConnectionConfig;
 import org.cityu.group6.generator.entity.GlobalConfig;
+import org.cityu.group6.generator.entity.PageEnum;
+import org.cityu.group6.generator.util.ParameterManager;
 import org.yaml.snakeyaml.Yaml;
 
 import com.greedystar.generator.entity.Configuration;
@@ -40,7 +42,7 @@ public class ConfigUtil {
 //        }
 		return ConfigUtil.configuration;
 	}
-
+	
 	/**
 	 * 设置配置信息，提供给用户的外部配置接口，使用该接口则不会再到generator.yaml下读取配置
 	 *
@@ -54,34 +56,35 @@ public class ConfigUtil {
 	/**
 	 * TODO readConfigurationFromUI
 	 */
-	public static void readConfigurationFromUI(GlobalConfig globalConfig, DatabaseConnectionConfig dbConfig) {
+	public static void readConfigurationFromUI() {
+		DatabaseConnectionConfig dbConfig = (DatabaseConnectionConfig) ParameterManager
+				.getParam(PageEnum.FIRST_PAGE.getPageName());
+		GlobalConfig globalConfig = (GlobalConfig) ParameterManager.getParam(PageEnum.SECOND_PAGE.getPageName());
+
 		Configuration configuration = new Configuration();
 		configuration.setAuthor(globalConfig.getAuthor());
-		// read projectFolderPath and packageName
 		configuration.setProjectFolderPath(globalConfig.getProjectFolderPath());
 		configuration.setPackageName(globalConfig.getPackageName());
-		String dbUrl = "jdbc:mysql://" + dbConfig.getHostIp() + ":" + dbConfig.getPort() + "/" + dbConfig.getSchema()
-				+ "?useUnicode=true&characterEncoding=" + dbConfig.getEncoding() + "&serverTimezone=Asia/Shanghai";
-		// read database configuration
-		Configuration.Db db = new Configuration.Db(dbUrl, dbConfig.getUsername(), dbConfig.getPassword());
+
+		Configuration.Db db = new Configuration.Db(dbConfig.getDbUrl(), dbConfig.getUsername(), dbConfig.getPassword());
 		configuration.setDb(db);
-		// read path configuration
+		
 		Configuration.Path path = new Configuration.Path(globalConfig.getControllerPath(),
 				globalConfig.getServicePath(), globalConfig.getInterfacePath(), globalConfig.getDaoPath(),
 				globalConfig.getEntityPath(), globalConfig.getMapperPath());
 		configuration.setPath(path);
-		// read name configuration (do not contain interfaceName)
+
 		Configuration.Name name = new Configuration.Name(globalConfig.getControllerName(),
 				globalConfig.getServiceName(), globalConfig.getDaoName(), globalConfig.getEntityName(),
 				globalConfig.getMapperName());
 		configuration.setName(name);
+		
 		configuration.setLombokEnable(globalConfig.isLombokEnable());
 		configuration.setMapperUnderSource(globalConfig.isMapperUnderSource());
 		configuration.setSwaggerEnable(globalConfig.isSwaggerEnable());
 		configuration.setMybatisPlusEnable(globalConfig.isMybatisPlusEnable());
 		configuration.setJpaEnable(globalConfig.isJpaEnable());
 		configuration.setFileOverride(globalConfig.isFileOverride());
-		// TODO GUI should use ChoiceBox
 		configuration.setIdStrategy(globalConfig.isIdStrategy() ? IdStrategy.AUTO : IdStrategy.UUID);
 
 		ConfigUtil.setConfiguration(configuration);

@@ -9,7 +9,6 @@ import java.util.ResourceBundle;
 import org.cityu.group6.generator.entity.DatabaseConnectionConfig;
 import org.cityu.group6.generator.entity.GlobalConfig;
 import org.cityu.group6.generator.util.AlertUtil;
-import org.cityu.group6.generator.util.DbConfigUtil;
 
 import com.greedystar.generator.invoker.SingleInvoker;
 import com.greedystar.generator.invoker.base.Invoker;
@@ -133,8 +132,9 @@ public class MainUIController implements Initializable {
 	private void generateCode() throws IOException {
 		// get gloabConfig & dbConfig from UI
 		GlobalConfig globalConfig = this.getGlobalConfigFromUI();
-		DatabaseConnectionConfig dbConfig = DbConfigUtil.getDbConfig();
-		ConfigUtil.readConfigurationFromUI(globalConfig, dbConfig);
+//		DatabaseConnectionConfig dbConfig = ParameterManager.getDbConfig();
+		DatabaseConnectionConfig dbConfig = new DatabaseConnectionConfig();
+//		ConfigUtil.readConfigurationFromUI(globalConfig, dbConfig);
 		// invoke, then generate code
 		Invoker invoker = new SingleInvoker.Builder().setTableName(globalConfig.getTableName())
 				.setClassName(globalConfig.getClassName()).build();
@@ -236,7 +236,7 @@ public class MainUIController implements Initializable {
 		globalConfig.setJpaEnable(jpaEnable.isSelected());
 		globalConfig.setSwaggerEnable(swaggerEnable.isSelected());
 		globalConfig.setLombokEnable(lombokEnable.isSelected());
-		globalConfig.setIdStrategy(idStrategy.isSelected());
+//		globalConfig.setIdStrategy(idStrategy.isSelected());
 		globalConfig.setFileOverride(fileOverride.isSelected());
 		globalConfig.setMapperUnderSource(mapperUnderSource.isSelected());
 		return globalConfig;

@@ -1,15 +1,19 @@
 package com.greedystar.generator.db;
 
 
-import com.greedystar.generator.entity.ColumnInfo;
-import com.greedystar.generator.utils.ConfigUtil;
-import com.greedystar.generator.utils.StringUtil;
-
-import java.sql.*;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Properties;
+
+import com.greedystar.generator.entity.ColumnInfo;
+import com.greedystar.generator.utils.ConfigUtil;
+import com.greedystar.generator.utils.StringUtil;
 
 /**
  * 数据库连接工具类

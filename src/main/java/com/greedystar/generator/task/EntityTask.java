@@ -14,6 +14,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.cityu.group6.generator.util.ParameterManager;
+
 /**
  * @author GreedyStar
  * @since 2018/4/20
@@ -63,12 +65,15 @@ public class EntityTask extends AbstractTask {
 		// StringUtil.package2Path(ConfigUtil.getConfiguration().getPackageName())
 		// +
 		// StringUtil.package2Path(ConfigUtil.getConfiguration().getPath().getEntity());
-		// TODO getFilePathFromGUI
+		
+		
 		String filePath = ConfigUtil.getConfiguration().getProjectFolderPath() + "\\"
 				+ StringUtil.package2Path(ConfigUtil.getConfiguration().getPath().getEntity());
 		String fileName = className + ".java";
 		// 生成Entity文件
-		FileUtil.generateToJava(FreemarkerConfigUtil.TYPE_ENTITY, entityData, filePath, fileName);
+		if (ParameterManager.isGenerate(fileName)) {
+			FileUtil.generateToJava(FreemarkerConfigUtil.TYPE_ENTITY, entityData, filePath, fileName);
+		}
 	}
 
 	/**

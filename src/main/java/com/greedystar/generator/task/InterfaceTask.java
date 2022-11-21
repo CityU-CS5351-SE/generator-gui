@@ -10,6 +10,8 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.cityu.group6.generator.util.ParameterManager;
+
 /**
  * @author GreedyStar
  * @since 2019/1/24
@@ -40,6 +42,8 @@ public class InterfaceTask extends AbstractTask {
 		String fileName = ConfigUtil.getConfiguration().getName().getInterf().replace(Constant.PLACEHOLDER,
 				invoker.getClassName()) + ".java";
 		// 生成Service接口文件
-		FileUtil.generateToJava(FreemarkerConfigUtil.TYPE_INTERFACE, interfaceData, filePath, fileName);
+		if (ParameterManager.isGenerate(fileName)) {
+			FileUtil.generateToJava(FreemarkerConfigUtil.TYPE_INTERFACE, interfaceData, filePath, fileName);
+		}
 	}
 }

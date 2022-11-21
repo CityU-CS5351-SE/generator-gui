@@ -10,6 +10,8 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.cityu.group6.generator.util.ParameterManager;
+
 /**
  * @author GreedyStar
  * @since 2018/4/20
@@ -67,6 +69,8 @@ public class ServiceTask extends AbstractTask {
 			fileName = serviceClassName + ".java";
 		}
 		// 生成Service文件
-		FileUtil.generateToJava(FreemarkerConfigUtil.TYPE_SERVICE, serviceData, filePath, fileName);
+		if (ParameterManager.isGenerate(fileName)) {
+			FileUtil.generateToJava(FreemarkerConfigUtil.TYPE_SERVICE, serviceData, filePath, fileName);
+		}
 	}
 }

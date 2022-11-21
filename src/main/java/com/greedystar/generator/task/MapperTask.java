@@ -12,6 +12,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.cityu.group6.generator.util.ParameterManager;
+
 /**
  * @author GreedyStar
  * @since 2018/4/20
@@ -78,12 +80,14 @@ public class MapperTask extends AbstractTask {
 			// TODO getFilePathFromGUI
 			String name = ConfigUtil.getConfiguration().getPackageName().replace(".", "\\");
 			filePath = ConfigUtil.getConfiguration().getProjectFolderPath().replace(name, "")
-					+ StringUtil.package2Path(ConfigUtil.getConfiguration().getPath().getService());
+					+ StringUtil.package2Path(ConfigUtil.getConfiguration().getPath().getMapper());
 		}
 		String fileName = ConfigUtil.getConfiguration().getName().getMapper().replace(Constant.PLACEHOLDER,
 				invoker.getClassName()) + ".xml";
 		// 生成Mapper文件
-		FileUtil.generateToJava(FreemarkerConfigUtil.TYPE_MAPPER, mapperData, filePath, fileName);
+		if (ParameterManager.isGenerate(fileName)) {
+			FileUtil.generateToJava(FreemarkerConfigUtil.TYPE_MAPPER, mapperData, filePath, fileName);
+		}
 	}
 
 	/**

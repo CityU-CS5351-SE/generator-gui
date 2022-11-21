@@ -1,14 +1,20 @@
 package com.greedystar.generator.task;
 
-import com.greedystar.generator.entity.Constant;
-import com.greedystar.generator.invoker.base.AbstractInvoker;
-import com.greedystar.generator.task.base.AbstractTask;
-import com.greedystar.generator.utils.*;
-import freemarker.template.TemplateException;
-
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
+
+import org.cityu.group6.generator.util.ParameterManager;
+
+import com.greedystar.generator.entity.Constant;
+import com.greedystar.generator.invoker.base.AbstractInvoker;
+import com.greedystar.generator.task.base.AbstractTask;
+import com.greedystar.generator.utils.ConfigUtil;
+import com.greedystar.generator.utils.FileUtil;
+import com.greedystar.generator.utils.FreemarkerConfigUtil;
+import com.greedystar.generator.utils.StringUtil;
+
+import freemarker.template.TemplateException;
 
 /**
  * @author GreedyStar
@@ -33,12 +39,14 @@ public class DaoTask extends AbstractTask {
 		// String filePath = FileUtil.getSourcePath() +
 		// StringUtil.package2Path(ConfigUtil.getConfiguration().getPackageName())
 		// + StringUtil.package2Path(ConfigUtil.getConfiguration().getPath().getDao());
-		// TODO getFilePathFromGUI
+		
 		String filePath = ConfigUtil.getConfiguration().getProjectFolderPath() + "\\"
 				+ StringUtil.package2Path(ConfigUtil.getConfiguration().getPath().getDao());
 		String fileName = ConfigUtil.getConfiguration().getName().getDao().replace(Constant.PLACEHOLDER,
 				invoker.getClassName()) + ".java";
 		// 生成dao文件
-		FileUtil.generateToJava(FreemarkerConfigUtil.TYPE_DAO, daoData, filePath, fileName);
+		if (ParameterManager.isGenerate(fileName)) {
+			FileUtil.generateToJava(FreemarkerConfigUtil.TYPE_DAO, daoData, filePath, fileName);
+		}
 	}
 }

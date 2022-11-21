@@ -17,4 +17,6 @@ public class DatabaseConnectionConfig {
 	private String schema;
 
 	private String encoding;
+
+	private String dbUrl;
 }

@@ -5,6 +5,10 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.cityu.group6.generator.entity.FileGenerationInfo;
+import org.cityu.group6.generator.entity.PageEnum;
+import org.cityu.group6.generator.util.ParameterManager;
+
 import com.greedystar.generator.entity.ColumnInfo;
 import com.greedystar.generator.entity.Constant;
 import com.greedystar.generator.invoker.base.AbstractInvoker;
@@ -56,16 +60,15 @@ public class ControllerTask extends AbstractTask {
 		// String filePath = FileUtil.getSourcePath() +
 		// StringUtil.package2Path(ConfigUtil.getConfiguration().getPackageName()) +
 		// StringUtil.package2Path(ConfigUtil.getConfiguration().getPath().getController());
-		// TODO get file path from GUI
-		// eg: projectFolderPath =
-		// "C:\JavaProjects\blogserver\src\main\java\org\cityu\group6\test"
-		// filePath = ${projectFolderPath} + ${controllerPath}
+		
 		String filePath = ConfigUtil.getConfiguration().getProjectFolderPath() + "\\"
 				+ StringUtil.package2Path(ConfigUtil.getConfiguration().getPath().getController());
 		String fileName = ConfigUtil.getConfiguration().getName().getController().replace(Constant.PLACEHOLDER,
 				invoker.getClassName()) + ".java";
-		// 生成Controller文件
-		FileUtil.generateToJava(FreemarkerConfigUtil.TYPE_CONTROLLER, controllerData, filePath, fileName);
+
+		if (ParameterManager.isGenerate(fileName)) {
+			FileUtil.generateToJava(FreemarkerConfigUtil.TYPE_CONTROLLER, controllerData, filePath, fileName);
+		}
 	}
 
 	/**

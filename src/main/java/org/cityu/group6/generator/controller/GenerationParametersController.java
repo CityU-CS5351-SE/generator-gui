@@ -25,7 +25,7 @@ import javafx.stage.Stage;
  *
  */
 @SuppressWarnings("restriction")
-public class SecondPageController implements Initializable {
+public class GenerationParametersController implements Initializable {
 	@FXML
 	private TextField author;
 	@FXML

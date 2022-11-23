@@ -188,9 +188,12 @@ public class GenerationParametersController implements Initializable {
 	private String pathToPackageName(String filePath) {
 		// get string after "src\main\java\"
 		String reg = "src\\main\\java\\";
-		String packageName = filePath.substring(filePath.lastIndexOf(reg) + reg.length());
-		// replace "\\" to "."
-		packageName = packageName.replace("\\", ".");
+		String packageName = "";
+		if (filePath.lastIndexOf(reg) > -1) {
+			packageName = filePath.substring(filePath.lastIndexOf(reg) + reg.length());
+			// replace "\\" to "."
+			packageName = packageName.replace("\\", ".");
+		}
 		return packageName;
 	}
 

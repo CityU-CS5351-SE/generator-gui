@@ -5,11 +5,11 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox prefHeight="200.0" prefWidth="50.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
+<VBox prefHeight="167.0" prefWidth="531.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
   <children>
-    <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="122.0" prefWidth="232.0" VBox.vgrow="ALWAYS">
+    <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="167.0" prefWidth="531.0" stylesheets="@bootstrap2.css" VBox.vgrow="ALWAYS">
       <children>
-        <Label alignment="CENTER" layoutX="48.0" layoutY="85.0" style="&#10;" text="Database Connection Testing Successful!" textAlignment="CENTER" textFill="#9f9f9f" wrapText="false">
+        <Label alignment="CENTER" layoutX="89.0" layoutY="72.0" style="&#10;" text="Database Connection Testing Successful!" textAlignment="CENTER" textFill="#0bc054" wrapText="false">
           <font>
             <Font size="18.0" />
           </font>

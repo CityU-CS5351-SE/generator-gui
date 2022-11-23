@@ -78,8 +78,8 @@ public class MapperTask extends AbstractTask {
 			// +
 			// StringUtil.package2Path(ConfigUtil.getConfiguration().getPath().getMapper());
 			// TODO getFilePathFromGUI
-			String name = ConfigUtil.getConfiguration().getPackageName().replace(".", "\\");
-			filePath = ConfigUtil.getConfiguration().getProjectFolderPath().replace(name, "")
+			String name = "\\" + ConfigUtil.getConfiguration().getPackageName().replace(".", "\\");
+			filePath = ConfigUtil.getConfiguration().getProjectFolderPath().replace(name, "") + "\\"
 					+ StringUtil.package2Path(ConfigUtil.getConfiguration().getPath().getMapper());
 		}
 		String fileName = ConfigUtil.getConfiguration().getName().getMapper().replace(Constant.PLACEHOLDER,

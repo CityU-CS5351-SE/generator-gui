@@ -150,8 +150,8 @@ public class ChooseFileController implements Initializable {
 			if (config.isMapperUnderSource()) {
 				filePath = config.getProjectFolderPath() + "\\" + StringUtil.package2Path(config.getMapperPath());
 			} else {
-				String name = config.getPackageName().replace(".", "\\");
-				filePath = config.getProjectFolderPath().replace(name, "")
+				String name = "\\" + config.getPackageName().replace(".", "\\");
+				filePath = config.getProjectFolderPath().replace(name, "") + "\\"
 						+ StringUtil.package2Path(config.getMapperPath());
 			}
 		}

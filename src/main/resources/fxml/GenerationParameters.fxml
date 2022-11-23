@@ -1,189 +1,387 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.String?>
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Accordion?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.CheckBox?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox prefHeight="640.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.cityu.group6.generator.controller.SecondPageController">
+<VBox prefHeight="786.0" prefWidth="641.0" style="-fx-background-color: #f8f8ff;" stylesheets="@bootstrap2.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.cityu.group6.generator.controller.GenerationParametersController">
   <children>
-    <AnchorPane fx:id="Author" maxHeight="-1.0" maxWidth="-1.0" prefHeight="739.0" prefWidth="640.0" VBox.vgrow="ALWAYS">
+    <AnchorPane fx:id="Author" maxHeight="-1.0" maxWidth="-1.0" prefHeight="750.0" prefWidth="640.0" VBox.vgrow="ALWAYS">
       <children>
             <Label layoutX="17.0" layoutY="7.0" text="Ⅱ Generation Parameters">
                <font>
                   <Font size="18.0" />
                </font>
             </Label>
-            <Label layoutX="21.0" layoutY="46.0" text="Author">
-               <font>
-                  <Font size="14.0" />
-               </font>
-            </Label>
-            <TextField fx:id="author" layoutX="129.0" layoutY="43.0" />
-            <Label layoutX="22.0" layoutY="77.0" text="ProjectPath">
-               <font>
-                  <Font size="14.0" />
-               </font>
-            </Label>
-            <TextField fx:id="projectFolderPath" layoutX="129.0" layoutY="75.0" prefHeight="23.0" prefWidth="290.0" />
-            <Label fx:id="controllerNameLabel" layoutX="63.0" layoutY="171.0" text="Name">
-               <font>
-                  <Font size="14.0" />
-               </font>
-            </Label>
-            <TextField fx:id="controllerName" layoutX="114.0" layoutY="173.0" text="\$sController" />
-            <Label fx:id="controllerPathLabel" layoutX="319.0" layoutY="173.0" text="Path">
-               <font>
-                  <Font size="14.0" />
-               </font>
-            </Label>
-            <TextField fx:id="controllerPath" layoutX="363.0" layoutY="173.0" text="controller" />
-            <Label fx:id="serviceNameLabel" layoutX="62.0" layoutY="224.0" text="Name">
-               <font>
-                  <Font size="14.0" />
-               </font>
-            </Label>
-            <TextField fx:id="serviceName" layoutX="114.0" layoutY="225.0" text="\$sServiceImpl" />
-            <Label fx:id="servicePathLabel" layoutX="317.0" layoutY="224.0" text="Path">
-               <font>
-                  <Font size="14.0" />
-               </font>
-            </Label>
-            <TextField fx:id="servicePath" layoutX="363.0" layoutY="224.0" text="service.impl" />
-            <Label fx:id="interfaceNameLabel" layoutX="62.0" layoutY="277.0" text="Name">
-               <font>
-                  <Font size="14.0" />
-               </font>
-            </Label>
-            <TextField fx:id="interfaceName" layoutX="114.0" layoutY="278.0" text="\$sService" />
-            <Label fx:id="interfacePathLabel" layoutX="316.0" layoutY="276.0" text="Path">
-               <font>
-                  <Font size="14.0" />
-               </font>
-            </Label>
-            <TextField fx:id="interfacePath" layoutX="363.0" layoutY="278.0" text="service" />
-            <Label fx:id="daoNameLabel" layoutX="60.0" layoutY="323.0" text="Name">
-               <font>
-                  <Font size="14.0" />
-               </font>
-            </Label>
-            <TextField fx:id="daoName" layoutX="114.0" layoutY="323.0" text="\$sDao" />
-            <Label fx:id="daoPathLabel" layoutX="316.0" layoutY="325.0" text="Path">
-               <font>
-                  <Font size="14.0" />
-               </font>
-            </Label>
-            <TextField fx:id="daoPath" layoutX="363.0" layoutY="325.0" text="dao" />
-            <Label fx:id="entityNameLabel" layoutX="60.0" layoutY="379.0" text="Name">
-               <font>
-                  <Font size="14.0" />
-               </font>
-            </Label>
-            <TextField fx:id="entityName" layoutX="114.0" layoutY="378.0" text="\$s" />
-            <Label fx:id="entityPathLabel" layoutX="316.0" layoutY="377.0" text="Path">
-               <font>
-                  <Font size="14.0" />
-               </font>
-            </Label>
-            <TextField fx:id="entityPath" layoutX="363.0" layoutY="377.0" text="entity" />
-            <Label fx:id="mapperNameLabel" layoutX="59.0" layoutY="426.0" text="Name">
-               <font>
-                  <Font size="14.0" />
-               </font>
-            </Label>
-            <TextField fx:id="mapperName" layoutX="114.0" layoutY="426.0" text="\$sMapper" />
-            <Label fx:id="mapperPathLabel" layoutX="315.0" layoutY="426.0" text="Path">
-               <font>
-                  <Font size="14.0" />
-               </font>
-            </Label>
-            <TextField fx:id="mapperPath" layoutX="363.0" layoutY="426.0" text="mybatis" />
-            <CheckBox fx:id="mybatisPlusEnable" layoutX="112.0" layoutY="464.0" mnemonicParsing="false" text="mybatisPlusEnable">
-               <font>
-                  <Font size="14.0" />
-               </font>
-            </CheckBox>
-            <CheckBox fx:id="jpaEnable" layoutX="342.0" layoutY="464.0" mnemonicParsing="false" text="jpaEnable">
-               <font>
-                  <Font size="14.0" />
-               </font>
-            </CheckBox>
-            <CheckBox fx:id="swaggerEnable" layoutX="112.0" layoutY="496.0" mnemonicParsing="false" text="swaggerEnable">
-               <font>
-                  <Font size="14.0" />
-               </font>
-            </CheckBox>
-            <CheckBox fx:id="lombokEnable" layoutX="342.0" layoutY="496.0" mnemonicParsing="false" selected="true" text="lombokEnable">
-               <font>
-                  <Font size="14.0" />
-               </font>
-            </CheckBox>
-            <CheckBox fx:id="fileOverride" layoutX="342.0" layoutY="524.0" mnemonicParsing="false" selected="true" text="fileOverride">
-               <font>
-                  <Font size="14.0" />
-               </font>
-            </CheckBox>
-            <CheckBox fx:id="mapperUnderSource" layoutX="111.0" layoutY="554.0" mnemonicParsing="false" text="mapperUnderSource">
-               <font>
-                  <Font size="14.0" />
-               </font>
-            </CheckBox>
-            <Button fx:id="backPage" layoutX="352.0" layoutY="584.0" mnemonicParsing="false" onMouseClicked="#backPage" text="Back">
-               <font>
-                  <Font size="18.0" />
-               </font>
-            </Button>
-            <Button fx:id="chooseProjectFolder" layoutX="444.0" layoutY="75.0" mnemonicParsing="false" onMouseClicked="#chooseProjectFolder" text="Choose" />
-            <Label layoutX="20.0" layoutY="112.0" text="PackageName">
-               <font>
-                  <Font size="14.0" />
-               </font>
-            </Label>
-            <TextField fx:id="packageName" layoutX="129.0" layoutY="110.0" prefHeight="23.0" prefWidth="290.0" promptText="org.cityu.group6.test" />
-            <Button fx:id="nextPage" layoutX="492.0" layoutY="586.0" mnemonicParsing="false" onMouseClicked="#nextPage" text="Next">
-               <font>
-                  <Font size="18.0" />
-               </font>
-            </Button>
-            <Label layoutX="23.0" layoutY="146.0" text="Controller">
-               <font>
-                  <Font size="14.0" />
-               </font>
-            </Label>
-            <Label layoutX="23.0" layoutY="199.0" text="Service">
-               <font>
-                  <Font size="14.0" />
-               </font>
-            </Label>
-            <Label layoutX="24.0" layoutY="252.0" text="Interface">
-               <font>
-                  <Font size="14.0" />
-               </font>
-            </Label>
-            <Label layoutX="22.0" layoutY="304.0" text="Dao">
-               <font>
-                  <Font size="14.0" />
-               </font>
-            </Label>
-            <Label layoutX="23.0" layoutY="354.0" text="Entity">
-               <font>
-                  <Font size="14.0" />
-               </font>
-            </Label>
-            <Label layoutX="23.0" layoutY="402.0" text="Mapper">
-               <font>
-                  <Font size="14.0" />
-               </font>
-            </Label>
-            <CheckBox fx:id="idStrategy" layoutX="112.0" layoutY="524.0" mnemonicParsing="false" selected="true" text="idStrategy">
-               <font>
-                  <Font size="14.0" />
-               </font>
-            </CheckBox>
+            <GridPane hgap="10.0" layoutX="22.0" layoutY="49.0" prefHeight="90.0" prefWidth="596.0" vgap="10.0">
+              <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="144.33331298828125" minWidth="10.0" prefWidth="104.6666259765625" />
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="405.66668701171875" minWidth="10.0" prefWidth="380.3333740234375" />
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="193.33331298828125" minWidth="10.0" prefWidth="87.0" />
+              </columnConstraints>
+              <rowConstraints>
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+              </rowConstraints>
+               <children>
+                  <Label text="Author">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="author" maxWidth="150.0" GridPane.columnIndex="1" />
+                  <Label text="ProjectPath" GridPane.rowIndex="1">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="projectFolderPath" prefHeight="23.0" prefWidth="290.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                  <Label text="PackageName" GridPane.rowIndex="2">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="packageName" prefHeight="23.0" prefWidth="290.0" promptText="org.cityu.group6.test" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                  <Button fx:id="chooseProjectFolder" mnemonicParsing="false" onMouseClicked="#chooseProjectFolder" styleClass="info" text="Choose" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+               </children>
+            </GridPane>
+            <VBox layoutX="22.0" layoutY="175.0" prefHeight="366.0" prefWidth="589.0">
+               <children>
+                  <VBox prefHeight="55.0" prefWidth="579.0">
+                     <children>
+                        <Label text="Controller">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                           <VBox.margin>
+                              <Insets bottom="5.0" />
+                           </VBox.margin>
+                        </Label>
+                        <HBox prefHeight="31.0" prefWidth="593.0">
+                           <children>
+                              <Label fx:id="controllerNameLabel" text="Name">
+                                 <font>
+                                    <Font size="14.0" />
+                                 </font>
+                                 <padding>
+                                    <Insets right="10.0" />
+                                 </padding>
+                                 <HBox.margin>
+                                    <Insets top="5.0" />
+                                 </HBox.margin>
+                              </Label>
+                              <TextField fx:id="controllerName" text="\$sController">
+                                 <HBox.margin>
+                                    <Insets right="50.0" />
+                                 </HBox.margin>
+                              </TextField>
+                              <Label fx:id="controllerPathLabel" text="Path">
+                                 <font>
+                                    <Font size="14.0" />
+                                 </font>
+                                 <HBox.margin>
+                                    <Insets right="10.0" top="5.0" />
+                                 </HBox.margin>
+                              </Label>
+                              <TextField fx:id="controllerPath" text="controller" />
+                           </children>
+                           <VBox.margin>
+                              <Insets left="50.0" />
+                           </VBox.margin>
+                        </HBox>
+                     </children>
+                     <padding>
+                        <Insets bottom="10.0" />
+                     </padding>
+                  </VBox>
+                  <VBox prefHeight="55.0" prefWidth="579.0">
+                     <children>
+                        <Label text="Service">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                           <VBox.margin>
+                              <Insets bottom="5.0" />
+                           </VBox.margin>
+                        </Label>
+                        <HBox prefHeight="31.0" prefWidth="504.0">
+                           <children>
+                              <Label fx:id="serviceNameLabel" text="Name">
+                                 <font>
+                                    <Font size="14.0" />
+                                 </font>
+                                 <HBox.margin>
+                                    <Insets right="10.0" top="5.0" />
+                                 </HBox.margin>
+                              </Label>
+                              <TextField fx:id="serviceName" text="\$sServiceImpl" />
+                              <Label fx:id="servicePathLabel" text="Path">
+                                 <font>
+                                    <Font size="14.0" />
+                                 </font>
+                                 <padding>
+                                    <Insets left="50.0" right="10.0" top="5.0" />
+                                 </padding>
+                              </Label>
+                              <TextField fx:id="servicePath" text="service.impl" />
+                           </children>
+                           <padding>
+                              <Insets left="50.0" />
+                           </padding>
+                        </HBox>
+                     </children>
+                     <padding>
+                        <Insets bottom="10.0" />
+                     </padding>
+                  </VBox>
+                  <VBox prefHeight="68.0" prefWidth="579.0">
+                     <children>
+                        <Label text="Interface">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                           <padding>
+                              <Insets bottom="5.0" />
+                           </padding>
+                        </Label>
+                        <HBox prefHeight="38.0" prefWidth="602.0">
+                           <children>
+                              <Label fx:id="interfaceNameLabel" text="Name">
+                                 <font>
+                                    <Font size="14.0" />
+                                 </font>
+                                 <padding>
+                                    <Insets right="10.0" top="5.0" />
+                                 </padding>
+                              </Label>
+                              <TextField fx:id="interfaceName" text="\$sService" />
+                              <Label fx:id="interfacePathLabel" text="Path">
+                                 <font>
+                                    <Font size="14.0" />
+                                 </font>
+                                 <padding>
+                                    <Insets left="50.0" right="10.0" top="5.0" />
+                                 </padding>
+                              </Label>
+                              <TextField fx:id="interfacePath" text="service" />
+                           </children>
+                           <padding>
+                              <Insets left="50.0" />
+                           </padding>
+                        </HBox>
+                     </children>
+                     <padding>
+                        <Insets bottom="10.0" />
+                     </padding>
+                  </VBox>
+                  <VBox prefHeight="55.0" prefWidth="529.0">
+                     <children>
+                        <Label text="Dao">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                           <padding>
+                              <Insets bottom="5.0" />
+                           </padding>
+                        </Label>
+                        <HBox prefHeight="38.0" prefWidth="471.0">
+                           <children>
+                              <Label fx:id="daoNameLabel" text="Name">
+                                 <font>
+                                    <Font size="14.0" />
+                                 </font>
+                                 <HBox.margin>
+                                    <Insets right="10.0" top="5.0" />
+                                 </HBox.margin>
+                              </Label>
+                              <TextField fx:id="daoName" text="\$sDao" />
+                              <Label fx:id="daoPathLabel" text="Path">
+                                 <font>
+                                    <Font size="14.0" />
+                                 </font>
+                                 <HBox.margin>
+                                    <Insets left="50.0" right="10.0" top="5.0" />
+                                 </HBox.margin>
+                              </Label>
+                              <TextField fx:id="daoPath" text="dao" />
+                           </children>
+                           <padding>
+                              <Insets left="50.0" />
+                           </padding>
+                        </HBox>
+                     </children>
+                     <padding>
+                        <Insets bottom="10.0" />
+                     </padding>
+                  </VBox>
+                  <VBox prefHeight="60.0" prefWidth="558.0">
+                     <children>
+                        <Label text="Entity">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                           <padding>
+                              <Insets bottom="5.0" />
+                           </padding>
+                        </Label>
+                        <HBox prefHeight="38.0" prefWidth="486.0">
+                           <children>
+                              <Label fx:id="entityNameLabel" text="Name">
+                                 <font>
+                                    <Font size="14.0" />
+                                 </font>
+                                 <HBox.margin>
+                                    <Insets />
+                                 </HBox.margin>
+                                 <padding>
+                                    <Insets right="10.0" top="5.0" />
+                                 </padding>
+                              </Label>
+                              <TextField fx:id="entityName" text="\$s" />
+                              <Label fx:id="entityPathLabel" text="Path">
+                                 <font>
+                                    <Font size="14.0" />
+                                 </font>
+                                 <padding>
+                                    <Insets left="50.0" right="10.0" top="5.0" />
+                                 </padding>
+                              </Label>
+                              <TextField fx:id="entityPath" text="entity" />
+                           </children>
+                           <padding>
+                              <Insets left="50.0" />
+                           </padding>
+                        </HBox>
+                     </children>
+                     <padding>
+                        <Insets bottom="10.0" />
+                     </padding>
+                  </VBox>
+                  <VBox prefHeight="60.0" prefWidth="579.0">
+                     <children>
+                        <Label text="Mapper">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                           <padding>
+                              <Insets bottom="5.0" />
+                           </padding>
+                        </Label>
+                        <HBox prefHeight="31.0" prefWidth="544.0">
+                           <children>
+                              <Label fx:id="mapperNameLabel" text="Name">
+                                 <font>
+                                    <Font size="14.0" />
+                                 </font>
+                                 <padding>
+                                    <Insets right="10.0" top="5.0" />
+                                 </padding>
+                              </Label>
+                              <TextField fx:id="mapperName" text="\$sMapper" />
+                              <Label fx:id="mapperPathLabel" text="Path">
+                                 <font>
+                                    <Font size="14.0" />
+                                 </font>
+                                 <padding>
+                                    <Insets left="50.0" right="10.0" top="5.0" />
+                                 </padding>
+                              </Label>
+                              <TextField fx:id="mapperPath" text="mybatis" />
+                           </children>
+                           <padding>
+                              <Insets left="50.0" />
+                           </padding>
+                        </HBox>
+                     </children>
+                  </VBox>
+               </children>
+            </VBox>
+            <AnchorPane layoutX="1.0" layoutY="726.0" prefHeight="60.0" prefWidth="640.0" style="-fx-background-color: #dcdcdc;">
+               <children>
+                  <Button fx:id="backPage" layoutX="410.0" layoutY="15.0" mnemonicParsing="false" onMouseClicked="#backPage" text="Back">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                     <styleClass>
+                        <String fx:value="action-btn" />
+                        <String fx:value="warning" />
+                     </styleClass>
+                  </Button>
+                  <Button fx:id="nextPage" layoutX="530.0" layoutY="15.0" mnemonicParsing="false" onMouseClicked="#nextPage" text="Next">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                     <styleClass>
+                        <String fx:value="action-btn" />
+                        <String fx:value="primary" />
+                     </styleClass>
+                  </Button>
+               </children>
+            </AnchorPane>
+            <GridPane hgap="5.0" layoutX="127.0" layoutY="570.0" prefHeight="136.0" prefWidth="370.0" vgap="5.0">
+              <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+              </columnConstraints>
+              <rowConstraints>
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+              </rowConstraints>
+               <children>
+                  <CheckBox fx:id="mapperUnderSource" mnemonicParsing="false" text="mapperUnderSource" GridPane.rowIndex="3">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </CheckBox>
+                  <CheckBox fx:id="idStrategy" mnemonicParsing="false" selected="true" text="idStrategy" GridPane.rowIndex="2">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </CheckBox>
+                  <CheckBox fx:id="fileOverride" mnemonicParsing="false" selected="true" text="fileOverride" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </CheckBox>
+                  <CheckBox fx:id="lombokEnable" mnemonicParsing="false" selected="true" text="lombokEnable" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </CheckBox>
+                  <CheckBox fx:id="mybatisPlusEnable" mnemonicParsing="false" text="mybatisPlusEnable">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </CheckBox>
+                  <CheckBox fx:id="jpaEnable" mnemonicParsing="false" text="jpaEnable" GridPane.columnIndex="1">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </CheckBox>
+                  <CheckBox fx:id="swaggerEnable" mnemonicParsing="false" text="swaggerEnable" GridPane.rowIndex="1">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </CheckBox>
+               </children>
+            </GridPane>
+            <Separator layoutX="10.0" layoutY="154.0" prefHeight="13.0" prefWidth="621.0" />
+            <Separator layoutX="10.0" layoutY="550.0" prefWidth="621.0" />
       </children>
     </AnchorPane>
       <Accordion />

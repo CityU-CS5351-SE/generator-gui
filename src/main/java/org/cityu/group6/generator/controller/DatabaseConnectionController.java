@@ -39,7 +39,7 @@ import javafx.stage.Stage;
  *
  */
 @SuppressWarnings("restriction")
-public class FirstPageController implements Initializable {
+public class DatabaseConnectionController implements Initializable {
 	@FXML
 	private TextField hostIp;
 	@FXML

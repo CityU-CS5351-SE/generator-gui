@@ -24,4 +24,8 @@ public class PathConvertTest {
 		}
 		System.out.println(className);
 	}
+	
+	public void pathTest() {
+		
+	}
 }
